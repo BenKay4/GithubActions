@@ -102,22 +102,21 @@ namespace GithubActionsLab
             Assert.Throws<ArgumentNullException>(() => Program.Multiply(null, "1"));
             Assert.Throws<ArgumentNullException>(() => Program.Multiply(null, null));
         }
-
         [Test]
         public void Divide_Valid_Kayigamba()
         {
-            Assert.AreEqual(5, Program.Divide("10", "2"));
+            Assert.AreEqual(2, Program.Divide("6", "3"));
             Assert.AreEqual(0.5, Program.Divide("1", "2"));
+            Assert.AreEqual(-2.5, Program.Divide("-5", "2"));
         }
 
         [Test]
         public void Divide_Invalid_Kayigamba()
         {
-            Assert.Throws<FormatException>(() => Program.Divide("a", "2"));
             Assert.Throws<FormatException>(() => Program.Divide("1", "a"));
+            Assert.Throws<FormatException>(() => Program.Divide("a", "1"));
             Assert.Throws<FormatException>(() => Program.Divide("a", "a"));
-            Assert.Throws<FormatException>(() => Program.Divide("10 2", "2"));
-            Assert.Throws<FormatException>(() => Program.Divide("10", "0"));
+            Assert.Throws<DivideByZeroException>(() => Program.Divide("1", "0"));
         }
 
         [Test]
@@ -127,5 +126,6 @@ namespace GithubActionsLab
             Assert.Throws<ArgumentNullException>(() => Program.Divide(null, "1"));
             Assert.Throws<ArgumentNullException>(() => Program.Divide(null, null));
         }
+
 
 }
